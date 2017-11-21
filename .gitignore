@@ -1,0 +1,7 @@
+packer_cache
+build.log
+iso
+box
+.vagrant
+**/output-*
+.Vagrantfile.swp
