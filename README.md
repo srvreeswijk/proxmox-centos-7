@@ -14,12 +14,27 @@ With openshift-ansible scripts these will be configured to be an Master or an No
 - packer will start some post scripts for some final configuration and cleanup
 
 # what needs to be done:
-- not all packages are installed during kickstart
-- secure storage for vialisadmin password. For now the user will be created with an unsafe password and manually changed. 
+- not all packages are installed during kickstart (how to add repo locations during kickstart or post operations)
+-- nss-pam-ldapd
+-- wget
+-- net-tools
+- secure storage for vialisadmin password in the centos7.json for packer, now it will ask during the install. 
 - ldap configuration
 - dns setup
-- default host setup etc....
-- een nette manier vinden om het vialisadmin wachtwoord in centos7.json te krijgen, nu vraagt hij de gebruiker. maar dat vind ik niet mooi.
+- ntp setup 
+- hostname setup
+- nic bootproto (none of static)
+- docker preconfig for openshift
+-- add dockervg to the docker-config see (we used option B): https://docs.openshift.org/latest/install_config/install/host_preparation.html#configuring-docker-storage
+-- run docker config command
+```
+cat <<EOF > /etc/sysconfig/docker-storage-setup
+VG=dockervg
+EOF
+
+docker-storage-setup
+```
+
 
 
 # more info:
